@@ -1,0 +1,74 @@
+:root {
+    --color-selector-margin: 5px;
+    --canvas-border-color: rgb(27, 35, 155);
+    --canvas-border-width: 10px;
+}
+html, body {
+    margin: 0;
+}
+
+#draw {
+    background-color: rgb(255, 255, 255);
+    border-width: var(--canvas-border-width) var(--canvas-border-width) var(--canvas-border-width) var(--canvas-border-width);
+    border-color: var(--canvas-border-color);
+    border-style: solid;
+    width: 100%;
+    height: 100%;
+}
+#eraser {
+    width: 60px;
+    height: 30px;
+    background-color: white;
+    float: left;
+    border: 5px rgb(92, 89, 89) solid;
+    border-radius: 10%;
+    margin: 4px 4px 4px 20px;
+}
+#red-selector {
+    background-color: red;
+}
+#green-selector {
+    background-color: green;
+}
+#blue-selector {
+    background-color: blue;
+}
+#black-selector {
+    background-color: black;
+}
+#pink-selector {
+    background-color: pink;
+}
+
+.color-selector {
+    width: 50px;
+    height: 30px;
+    float: left;
+    margin: 4px;
+    border-color: black;
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 50%;
+}
+#legend {
+    border-width: 0px var(--canvas-border-width) var(--canvas-border-width) var(--canvas-border-width);
+    border-color: var(--canvas-border-color);
+    border-style: solid;
+    width: 100%;
+    height: 20%;
+}
+
+.marker-width {
+    float: right;
+    margin: var(--color-selector-margin);
+}
+.settings {
+    float: right;
+    margin-top: 10px;
+}
+/*
+#draw:active {
+    cursor: url(image/pencil.svg);
+}
+*/
+
