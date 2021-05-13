@@ -13,7 +13,7 @@
 <body>
         <canvas id="draw" class="" width="800" height="800"></canvas>
 
-        <div id="legend" class="">
+        <div id="legend" class="border border-4 d-flex justify-content-center align-items-center">
             <label for="marker-width" class="marker-width">Marker Size</label>
             <input type="range" class="settings marker-width" name="marker-width" min="1" max="10" value="5" data-sizing="px">
 
@@ -36,7 +36,7 @@
         let isDrawing = false;
         let lastX = 0;
         let lastY = 0;
-        let legendHeight = 60;
+        let legendHeight = 50;
 
         //-- Set the canvas size
         canvas.width = window.innerWidth;
