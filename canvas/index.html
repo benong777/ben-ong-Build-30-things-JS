@@ -36,7 +36,7 @@
         let isDrawing = false;
         let lastX = 0;
         let lastY = 0;
-        let legendHeight = 50;
+        let legendHeight = 80;
 
         //-- Set the canvas size
         canvas.width = window.innerWidth;
@@ -46,9 +46,15 @@
         console.log("Canvas height: " + canvas.height);
         console.log("InnerHeight: " + window.innerHeight);
 
-        //-- Set legend size
-        let legend = document.querySelector('#legend');
-        legend.style.height = legendHeight + "px";
+        window.onresize = function() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight - 50;
+
+            //-- Set legend size
+            let legend = document.querySelector('#legend');
+            //legend.style.height = legendHeight + "px";
+            legend.style.height = legendHeight;
+        }
 
         ctx.lineWidth = document.querySelector('input').value * 2;
         ctx.strokeStyle = 'blue';
@@ -71,6 +77,7 @@
             [lastX, lastY] = [event.offsetX, event.offsetY];
         }
 
+        //-- Event Listeners
         canvas.addEventListener('mousemove', draw);
         canvas.addEventListener('mousedown', (event) => { 
             [lastX, lastY] = [event.offsetX, event.offsetY];
