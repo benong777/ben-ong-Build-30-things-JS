@@ -11,9 +11,9 @@
     <link rel="stylesheet" href="./style.css">
 </head>
 <body>
-        <canvas id="draw" class="" width="800" height="800"></canvas>
+        <canvas id="draw" class=""></canvas>
 
-        <div id="legend" class="border border-4 d-flex justify-content-center align-items-center">
+        <div id="legend" class="border d-flex justify-content-center align-items-center">
             <label for="marker-width" class="marker-width">Marker Size</label>
             <input type="range" class="settings marker-width" name="marker-width" min="1" max="10" value="5" data-sizing="px">
 
@@ -45,15 +45,10 @@
         console.log("Canvas width: " + canvas.width);
         console.log("Canvas height: " + canvas.height);
         console.log("InnerHeight: " + window.innerHeight);
-
+        
         window.onresize = function() {
             canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight - 50;
-
-            //-- Set legend size
-            let legend = document.querySelector('#legend');
-            //legend.style.height = legendHeight + "px";
-            legend.style.height = legendHeight;
+            canvas.height = window.innerHeight - legendHeight;
         }
 
         ctx.lineWidth = document.querySelector('input').value * 2;
