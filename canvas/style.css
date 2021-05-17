@@ -1,7 +1,7 @@
 :root {
     --color-selector-margin: 5px;
-    --canvas-border-color: rgb(27, 35, 155);
-    --canvas-border-width: 10px;
+    --canvas-border-color: rgb(29, 29, 128);
+    --canvas-border-width: 18px;
 }
 html, body {
     margin: 0;
@@ -24,6 +24,15 @@ html, body {
     float: left;
     border: 5px rgb(92, 89, 89) solid;
     border-radius: 10%;
+    margin: 4px 4px 4px 20px;
+}
+#clear-all {
+    width: 60px;
+    height: 30px;
+    background-color: white;
+    float: left;
+    border: 5px red solid;
+    border-radius: 50%;
     margin: 4px 4px 4px 20px;
 }
 #red-selector {

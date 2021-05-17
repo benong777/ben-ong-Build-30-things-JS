@@ -24,6 +24,9 @@
             <div id="pink-selector" class="color-selector"></div>
 
             <div id="eraser" class="d-flex justify-content-center align-items-center">Eraser</div>
+
+            <div id="clear-all" class="d-flex justify-content-center align-items-center">Clear</div>
+
         </div>
 
 
@@ -133,6 +136,14 @@
             console.log('Eraser has been selected');
             ctx.beginPath();
             ctx.strokeStyle = 'white';
+        });
+
+        //--- Clear All
+        const clearAll = document.getElementById("clear-all");
+        clearAll.addEventListener('click', function(){
+            console.log('Clear-all has been selected');
+            ctx.clearRect(0,0,canvas.width,canvas.height);
+            ctx.beginPath();
         });
     </script>
 
