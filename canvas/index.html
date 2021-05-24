@@ -22,6 +22,7 @@
             <div id="blue-selector" class="color-selector"></div>
             <div id="black-selector" class="color-selector"></div>
             <div id="pink-selector" class="color-selector"></div>
+            <div id="random-selector" class="color-selector"></div>
 
             <div id="eraser" class="d-flex justify-content-center align-items-center">Eraser</div>
 
@@ -37,17 +38,17 @@
         
         //-- Variables
         let isDrawing = false;
+        let isRandom = false;
         let lastX = 0;
         let lastY = 0;
         let legendHeight = 80;
 
+        let hue = 0;
+        let direction = true;
+
         //-- Set the canvas size
         canvas.width = window.innerWidth;
         canvas.height = window.innerHeight-legendHeight;
-        //-- ??? --- Do we need to indicate the px
-        console.log("Canvas width: " + canvas.width);
-        console.log("Canvas height: " + canvas.height);
-        console.log("InnerHeight: " + window.innerHeight);
         
         window.onresize = function() {
             canvas.width = window.innerWidth;
@@ -63,13 +64,32 @@
         function draw(event) {
             //-- Stop when mouse is not clicked
             if (!isDrawing) return;
-            console.log(event);
+            //console.log(event);
 
             //-- Start from
             ctx.moveTo(lastX, lastY);
             //-- Go to
             ctx.lineTo(event.offsetX, event.offsetY);
             ctx.stroke();
+
+            //-- Change hue when random is selected
+            if (isRandom) {
+                ctx.beginPath();
+                ctx.strokeStyle = `hsl(${hue}, 100%, 50%)`;
+                hue+=5;
+                if (hue > 360) {
+                    hue = 0;
+                }
+                //-- incr/dec lineWidth
+                if (ctx.lineWidth > 70 || ctx.lineWidth < 10) {
+                    direction = !direction;
+                }
+                if (direction) {
+                    ctx.lineWidth++;
+                } else {
+                    ctx.lineWidth--
+                }
+            } 
 
             //-- Update last position
             [lastX, lastY] = [event.offsetX, event.offsetY];
@@ -98,6 +118,7 @@
         const redSelector = document.getElementById("red-selector");
         redSelector.addEventListener('click', () => {
             console.log("Red has been selected");
+            isRandom = false;
             ctx.beginPath();
             ctx.strokeStyle = 'red';
         });
@@ -105,6 +126,7 @@
         const greenSelector = document.getElementById("green-selector");
         greenSelector.addEventListener('click', () => {
             console.log("Green has been selected");
+            isRandom = false;
             ctx.beginPath();
             ctx.strokeStyle = 'green';
         });
@@ -112,6 +134,7 @@
         const blueSelector = document.getElementById("blue-selector");
         blueSelector.addEventListener('click', () => {
             console.log("blue has been selected");
+            isRandom = false;
             ctx.beginPath();
             ctx.strokeStyle = 'blue';
         });
@@ -119,6 +142,7 @@
         const blackSelector = document.getElementById("black-selector");
         blackSelector.addEventListener('click', () => {
             console.log("black has been selected");
+            isRandom = false;
             ctx.beginPath();
             ctx.strokeStyle = 'black';
         });
@@ -126,8 +150,17 @@
         const pinkSelector = document.getElementById("pink-selector");
         pinkSelector.addEventListener('click', () => {
             console.log("pink has been selected");
+            isRandom = false;
             ctx.beginPath();
             ctx.strokeStyle = 'pink';
+        });
+        //--- Event Triggers - random
+        const randomSelector = document.getElementById("random-selector");
+        randomSelector.addEventListener('click', () => {
+            console.log("random has been selected");
+            isRandom = true;
+            ctx.beginPath();
+            ctx.strokeStyle = '#BADA55';
         });
 
         //--- Eraser
